@@ -1,0 +1,178 @@
+
+ED... python 
+LISTAS^^^^^^^^^^
+
+mi_lista = [1, 2, 3, 4, 5]
+
+mi_lista.append(6)  # mi_lista es ahora [1, 2, 3, 4, 5, 6]
+
+mi_lista.extend([7, 8, 9])  # mi_lista es ahora [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+mi_lista.insert(0, 0)  # mi_lista es ahora [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+mi_lista.remove(5)  # mi_lista es ahora [0, 1, 2, 3, 4, 6, 7, 8, 9]
+
+elemento = mi_lista.pop()  # elemento es 9, mi_lista es ahora [0, 1, 2, 3, 4, 6, 7, 8]
+
+indice = mi_lista.index(4)  # indice es 4
+
+conteo = mi_lista.count(2)  # conteo es 1
+
+mi_lista.sort(reverse=True)  # mi_lista es ahora [8, 7, 6, 4, 3, 2, 1, 0]
+
+mi_lista.reverse()  # mi_lista es ahora [0, 1, 2, 3, 4, 6, 7, 8]
+
+copia = mi_lista.copy()  # crea una nueva lista con los mismos elementos
+
+^^^^^^^^^^
+
+********Tuplas*********
+
+son inmutables ... sirven para guardar info que no se va a modificar 
+metodos{
+    count (contar elementos )
+    index (devuekve el indice de un elemento )
+
+}
+
+
+///////////////DICCIONARIO////////////////////////
+
+get(key(algo))
+keys()
+
+items()
+
+update(other_dict)
+
+pop(key[, default])
+
+clear()
+
+copy()
+
+setdefault(key[, default])
+
+  
+
+
+
+Conjuntos (Sets) en Python:
+
+Son colecciones desordenadas de elementos únicos.
+Son mutables, pero solo pueden contener elementos inmutables.
+Se definen usando llaves {} o la función set().
+Son muy eficientes para operaciones de membresía y eliminación de duplicados.
+Métodos principales de los conjuntos:
+
+add(elemento): Añade un elemento al conjunto.
+remove(elemento): Elimina un elemento. Lanza un error si no existe.
+discard(elemento): Elimina un elemento si existe, sin lanzar error si no está presente.
+pop(): Elimina y devuelve un elemento arbitrario.
+clear(): Elimina todos los elementos del conjunto.
+union(otro_conjunto): Devuelve un nuevo conjunto con elementos de ambos conjuntos.
+intersection(otro_conjunto): Devuelve un nuevo conjunto con elementos comunes.
+difference(otro_conjunto): Devuelve un nuevo conjunto con elementos en el primer conjunto pero no en el segundo.
+issubset(otro_conjunto): Verifica si el conjunto es subconjunto de otro.
+issuperset(otro_conjunto): Verifica si el conjunto es superconjunto de otro.
+
+
+
+ESTRUCTURAS DE DATOS EN PYTHON: LISTAS, TUPLAS, DICCIONARIOS Y CONJUNTOS
+
+1. LISTAS
+Características:
+- Mutables (se pueden modificar después de su creación)
+- Ordenadas (mantienen el orden de inserción)
+- Permiten elementos duplicados
+- Se definen con corchetes []
+
+Métodos comunes:
+- append(elemento): Añade un elemento al final
+- extend(iterable): Extiende la lista con elementos de otro iterable
+- insert(índice, elemento): Inserta un elemento en una posición específica
+- remove(elemento): Elimina la primera aparición de un elemento
+- pop([índice]): Elimina y devuelve el elemento en el índice especificado (o el último si no se especifica)
+- sort(): Ordena la lista in situ
+- reverse(): Invierte la lista in situ
+- index(elemento): Devuelve el índice de la primera aparición del elemento
+- count(elemento): Cuenta las apariciones de un elemento
+
+Usos típicos:
+- Almacenar colecciones de elementos del mismo tipo que pueden cambiar
+- Mantener secuencias ordenadas de elementos
+
+2. TUPLAS
+Características:
+- Inmutables (no se pueden modificar después de su creación)
+- Ordenadas (mantienen el orden de inserción)
+- Permiten elementos duplicados
+- Se definen con paréntesis () o sin ellos
+
+Métodos comunes:
+- count(elemento): Cuenta las apariciones de un elemento
+- index(elemento): Devuelve el índice de la primera aparición del elemento
+
+Usos típicos:
+- Almacenar colecciones de elementos que no deben cambiar
+- Usar como claves en diccionarios (ya que son inmutables)
+- Representar estructuras de datos fijas, como coordenadas
+
+3. DICCIONARIOS
+Características:
+- Mutables
+- No ordenados (en versiones antiguas de Python; en versiones recientes mantienen el orden de inserción)
+- Pares clave-valor únicos
+- Se definen con llaves {}
+
+Métodos comunes:
+- get(clave[, valor_predeterminado]): Obtiene el valor de una clave
+- keys(): Devuelve una vista de las claves
+- values(): Devuelve una vista de los valores
+- items(): Devuelve una vista de los pares clave-valor
+- update(otro_dict): Actualiza el diccionario con elementos de otro diccionario o iterable de pares clave-valor
+- pop(clave[, valor_predeterminado]): Elimina y devuelve el valor de una clave
+- clear(): Elimina todos los elementos del diccionario
+
+Usos típicos:
+- Mapear claves a valores
+- Almacenar datos estructurados
+- Crear mini-bases de datos en memoria
+
+4. CONJUNTOS (SETS)
+Características:
+- Mutables (aunque existe una versión inmutable llamada frozenset)
+- No ordenados
+- Elementos únicos (no permiten duplicados)
+- Se definen con llaves {} o la función set()
+
+Métodos comunes:
+- add(elemento): Añade un elemento al conjunto
+- remove(elemento): Elimina un elemento (lanza error si no existe)
+- discard(elemento): Elimina un elemento si existe
+- pop(): Elimina y devuelve un elemento arbitrario
+- clear(): Elimina todos los elementos del conjunto
+- union(otro_conjunto): Devuelve un nuevo conjunto con elementos de ambos conjuntos
+- intersection(otro_conjunto): Devuelve un nuevo conjunto con elementos comunes
+- difference(otro_conjunto): Devuelve un nuevo conjunto con elementos en el primero pero no en el segundo
+- issubset(otro_conjunto): Verifica si el conjunto es subconjunto de otro
+- issuperset(otro_conjunto): Verifica si el conjunto es superconjunto de otro
+
+Usos típicos:
+- Eliminar duplicados de una secuencia
+- Realizar operaciones matemáticas de conjuntos (unión, intersección, diferencia)
+- Pruebas de membresía rápidas
+
+COMPARACIÓN DE CARACTERÍSTICAS:
+- Listas: Mutables, ordenadas, permiten duplicados, []
+- Tuplas: Inmutables, ordenadas, permiten duplicados, ()
+- Diccionarios: Mutables, pares clave-valor únicos, {}
+- Conjuntos: Mutables, elementos únicos, no ordenados, {}
+
+ELECCIÓN DE ESTRUCTURA DE DATOS:
+- Usa listas cuando necesites una colección ordenada y mutable de elementos.
+- Usa tuplas para colecciones inmutables o datos que no deben cambiar.
+- Usa diccionarios cuando necesites asociar claves con valores.
+- Usa conjuntos para almacenar elementos únicos y realizar operaciones de conjuntos.
+
+Cada estructura tiene sus propias fortalezas y es más adecuada para ciertos tipos de tareas. La elección dependerá de los requisitos específicos de tu programa y de las operaciones que necesites realizar con los datos.
