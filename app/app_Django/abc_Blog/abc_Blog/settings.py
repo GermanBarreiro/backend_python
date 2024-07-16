@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'manage_post.apps.ManagePostConfig', 
     'user.apps.UserConfig',
+    'corsheaders',
     'django_cleanup.apps.CleanupConfig',
 
 ]
@@ -42,6 +43,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'abc_Blog.urls'
