@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'manage_post.apps.ManagePostConfig', 
     'user.apps.UserConfig',
     'corsheaders',
+    'rest_framework',
     'django_cleanup.apps.CleanupConfig',
 
 ]
