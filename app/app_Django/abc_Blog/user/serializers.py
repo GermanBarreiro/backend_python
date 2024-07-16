@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from .models import User, Profile
+
 
 User = get_user_model()
 
@@ -27,3 +29,17 @@ class UserUpdateSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+    
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['photo', 'profession', 'about', 'birthday', 'twitter', 'linkedin', 'facebook']
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer()
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'fullname', 'profile']
