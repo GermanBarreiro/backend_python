@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from .models import Article, Rating
+from .models import Article, Category, Rating
+from .models import Category
+
 
 User = get_user_model()
 
@@ -19,7 +21,7 @@ class ArticleListSerializer(serializers.ModelSerializer):
         return 0
 
 class ArticleDetailSerializer(serializers.ModelSerializer):
-    author = serializers.CharField(source='user_id.username')
+    author = serializers.CharField(source='user_id.username', read_only=True)
     categories = serializers.StringRelatedField(many=True)
     average_rating = serializers.SerializerMethodField()
 
@@ -32,3 +34,20 @@ class ArticleDetailSerializer(serializers.ModelSerializer):
         if ratings.exists():
             return sum(rating.values for rating in ratings) / ratings.count()
         return 0
+
+class ArticleCreateSerializer(serializers.ModelSerializer):
+    categories = serializers.PrimaryKeyRelatedField(
+        queryset=Category.objects.all(),
+        many=True,
+        required=True
+    )
+
+    class Meta:
+        model = Article
+        fields = ['title', 'introduction', 'body', 'image', 'categories']
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'name']

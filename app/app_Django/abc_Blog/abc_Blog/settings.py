@@ -31,9 +31,9 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'user.User'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+  'DEFAULT_AUTHENTICATION_CLASSES': (
+    'rest_framework_simplejwt.authentication.JWTAuthentication',
+  ),
 }
 
 SIMPLE_JWT = {
@@ -79,7 +79,7 @@ CORS_ALLOW_ALL_ORIGINS = True  # Solo para desarrollo, no uses esto en producci√
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 ]
-
+CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = 'abc_Blog.urls'
 
 TEMPLATES = [
