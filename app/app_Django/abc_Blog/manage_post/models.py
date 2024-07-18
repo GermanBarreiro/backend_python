@@ -23,7 +23,6 @@ class Category(models.Model):
 class Article(models.Model):
     title=models.CharField(max_length=255)
     introduction=models.CharField(max_length=255)
-    slug=models.SlugField( unique=True,max_length=255)
     image=models.ImageField(upload_to='Articles',blank=False, null=False)
     body=models.TextField()
     user_id=models.ForeignKey(User, on_delete=models.CASCADE)
@@ -44,17 +43,16 @@ class Article(models.Model):
 
 
 class Rating(models.Model):
-    values=models.FloatField()
-    description=models.CharField(max_length=255)
-    article_id=models.ForeignKey(Article, on_delete=models.CASCADE)
-    user_id=models.ForeignKey(User, on_delete=models.CASCADE)
-    created=models.DateTimeField(auto_now_add=True)
-    status=models.BooleanField(default=True)
-
-    def __str__(self):
-        return str(self.user_id.username)
-
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    article_id = models.ForeignKey(Article, on_delete=models.CASCADE)
+    vote = models.BooleanField(null=True, blank=True) 
+    created = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(default=True)
 
     class Meta:
-        verbose_name="Rating"
-        verbose_name_plural="Ratings"
+        unique_together = ('user_id', 'article_id')  
+
+    def __str__(self):
+        if self.vote is None:
+            return f'{self.user_id.username} - No vote'
+        return f'{self.user_id.username} - {"Upvote" if self.vote else "Downvote"}'
