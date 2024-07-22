@@ -41,10 +41,11 @@ class UpdateUserView(APIView):
     permission_classes = [IsAuthenticated]
 
     def put(self, request):
-        serializer = UserUpdateSerializer(request.user, data=request.data, partial=True)
+        user = request.user
+        serializer = UserUpdateSerializer(user, data=request.data, partial=True)
         if serializer.is_valid():
             user = serializer.save()
-            return Response(UserSerializer(user).data)
+            return Response(UserDetailSerializer(user).data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserProfileView(APIView):

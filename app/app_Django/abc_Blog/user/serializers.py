@@ -2,7 +2,6 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from .models import User, Profile
 
-
 User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
@@ -16,26 +15,40 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         return user
 
-class UserUpdateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('username', 'fullname', 'email')
-
-    def update(self, instance, validated_data):
-        password = validated_data.pop('password', None)
-        for attr, value in validated_data.items():
-            setattr(instance, attr, value)
-        if password:
-            instance.set_password(password)
-        instance.save()
-        return instance
-    
-
-
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ['photo', 'profession', 'about', 'birthday', 'twitter', 'linkedin', 'facebook']
+        extra_kwargs = {
+            'photo': {'required': False},
+            'profession': {'required': False},
+            'about': {'required': False},
+            'birthday': {'required': False},
+            'twitter': {'required': False},
+            'linkedin': {'required': False},
+            'facebook': {'required': False},
+        }
+
+class UserUpdateSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer()
+
+    class Meta:
+        model = User
+        fields = ('username', 'fullname', 'email', 'profile')
+
+    def update(self, instance, validated_data):
+        profile_data = validated_data.pop('profile', None)
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+
+        if profile_data:
+            profile = instance.profile
+            for attr, value in profile_data.items():
+                setattr(profile, attr, value)
+            profile.save()
+
+        return instance
 
 class UserDetailSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer()
