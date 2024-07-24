@@ -6,8 +6,6 @@ User=get_user_model()
 # Create your models here.
 class Category(models.Model):
     name=models.CharField(max_length=20)
-    image=models.ImageField(upload_to='Categories',blank=False, null=False)
-    slug=models.SlugField( unique=True,max_length=40)
     featured=models.BooleanField(default=False)
     created=models.DateTimeField(auto_now_add=True)
     updated=models.DateTimeField(auto_now=True)
