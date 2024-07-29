@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'manage_post.apps.ManagePostConfig',
     'user.apps.UserConfig',
-    'asistente_virtual.apps.AsistenteVirtualConfig',
 ]
 
 AUTH_USER_MODEL = 'user.User'
